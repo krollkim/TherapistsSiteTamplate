@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default CSS vars – overridden at runtime by layout.tsx via <html style="..."> */
+:root {
+  --cp-50:  #f8fafc; --cp-100: #f1f5f9; --cp-200: #e2e8f0;
+  --cp-300: #cbd5e1; --cp-400: #94a3b8; --cp-500: #64748b;
+  --cp-600: #475569; --cp-700: #334155; --cp-800: #1e293b;
+  --cp-900: #0f172a;
+  --cp-bg:         #f8fafc;
+  --cp-grad-start: #475569;
+  --cp-grad-end:   #94a3b8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  direction: rtl;
+  background-color: var(--cp-bg);
+  color: #2c2c2c;
+  font-family: var(--font-heebo), var(--font-assistant), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--cp-100); }
+::-webkit-scrollbar-thumb  { background: var(--cp-300); border-radius: 3px; }
+
+/* ── Gradient text – colors driven by palette ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cp-grad-start), var(--cp-grad-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Floating WhatsApp button ── */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: #25d366;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,.6);
+}
+
+@layer utilities {
+  .section-pad {
+    @apply py-20 px-6 md:px-16 lg:px-24;
+  }
+}
